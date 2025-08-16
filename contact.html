@@ -1,0 +1,139 @@
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Contact — Elevate</title>
+  <link rel="stylesheet" href="style.css"/>
+  <style>
+    .contact-form {
+      max-width: 600px; 
+      margin: 30px auto; 
+      background: #1a1a1a;
+      padding: 25px;
+      border-radius: 12px;
+      color: white;
+    }
+    .contact-form h2 {
+      text-align: center;
+      margin-bottom: 10px;
+    }
+    .contact-description {
+      text-align: center;
+      font-size: 0.95rem;
+      color: #ccc;
+      margin-bottom: 20px;
+      line-height: 1.5;
+    }
+    .contact-form label {
+      display: block;
+      margin-top: 15px;
+    }
+    .contact-form input,
+    .contact-form textarea {
+      width: 100%;
+      padding: 12px;
+      margin-top: 5px;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+    }
+    .contact-form button {
+      margin-top: 20px;
+      width: 100%;
+      padding: 14px;
+      background: #000dffb3;
+      border: none;
+      border-radius: 8px;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    .contact-form button:hover {
+      background: #4900e6;
+    }
+  </style>
+</head>
+<body>
+  <div class="page-wrap">
+    <header class="header">
+      <div class="header-inner container">
+        <a class="brand" href="home.html">
+          <img src="Logo.png" alt="Elevate logo"/>
+        </a>
+        <nav class="nav" aria-label="Main Navigation">
+          <a href="home.html">Home</a>
+          <a href="services.html">Services</a>
+          <a href="contact.html">Contact</a>
+          <a href="The Team.html">The Team</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="container">
+      <form class="contact-form" onsubmit="sendEmail(event)">
+        <h2>Contact Us</h2>
+        <p class="contact-description">
+          Have a question or need support?  
+          Reach out for <strong>Fortnite coaching inquiries VFX & GFX commissions,  
+          collaboration requests, or general business opportunities.  </strong>
+          We're here to help you succeed.
+        </p>
+
+        <label for="email">Your Email:</label>
+        <input type="email" id="email" placeholder="you@example.com" required>
+
+        <label for="message">Message:</label>
+        <textarea id="message" rows="5" placeholder="Write your message here..." required></textarea>
+
+        <button type="submit">Send Message</button>
+      </form>
+    </main>
+  </div>
+
+  <script>
+    function sendEmail(event) {
+      event.preventDefault();
+
+      const email = document.getElementById('email').value;
+      const message = document.getElementById('message').value;
+
+      
+      const recipient = "elevatestudios@usa.com";
+      const subject = "Contact from " + email;
+
+      const mailtoLink = `mailto:${recipient}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(message)}`;
+
+      window.open(mailtoLink, '_blank');
+    }
+  </script>
+
+<!-- FOOTER -->
+<footer style="background-color: #2600ffb3; color: #fff; padding: 20px 0; width: 100%;">
+  <div style="max-width: 1200px; margin: 0 auto; padding: 0 20px; display: flex; flex-direction: column; align-items: center; gap: 10px; text-align: center;">
+
+   
+    <div style="font-size: 1.2rem; font-weight: bold;">
+      Elevate
+    </div>
+
+    <!-- Social Icons -->
+    <div style="display: flex; gap: 15px; justify-content: center;">
+      <a href="https://twitter.com/ElevateStudio_" target="_blank" rel="noopener">
+        <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/x.svg" alt="Twitter" style="width: 24px; height: 24px; filter: invert(1);">
+      </a>
+      <a href="https://discord.gg/J554c8HsdN" target="_blank" rel="noopener">
+        <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/discord.svg" alt="Discord" style="width: 24px; height: 24px; filter: invert(1);">
+      </a>
+    </div>
+
+    
+    <a href="mailto:ElevateStudios@usa.com" style="background-color: #fff; color: #4c00ff; padding: 6px 14px; border-radius: 5px; text-decoration: none; font-weight: bold;">
+      Contact Us
+    </a>
+
+    <div style="font-size: 0.9rem;">
+      &copy; 2025 <strong>Elevate</strong> — Made by 
+      <a href="https://twitter.com/nthiapsd" target="_blank" rel="noopener" style="color: #fff; text-decoration: underline;">@nthiapsd</a>
+    </div>
+
+  </div>
+</footer>

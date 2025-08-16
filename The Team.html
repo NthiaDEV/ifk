@@ -1,0 +1,229 @@
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Elevate — Studio & Coaching Hub</title>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+  <div class="page-wrap">
+    <header class="header">
+      <div class="header-inner container">
+        <a class="brand" href="#home">
+          <img src="Logo.png" alt="Elevate logo"/>
+        </a>
+        <nav class="nav" aria-label="Main Navigation">
+          <a href="home.html">Home</a>
+          <a href="services.html">Services</a>
+          <a href="contact.html">Contact</a>
+          <a href="The Team.html">The Team</a>
+        </nav>
+      </div>
+    </header>
+
+
+<!-- OUR TEAM -->
+<section id="our-team" class="section">
+  <div class="section-strap">
+    <h2 class="gradient-title">
+      <span class="word-old">OUR</span> <span class="word-new">TEAM</span>
+    </h2>
+    <p class="latest-sub">Meet the amazing people behind Elevate.</p>
+  </div>
+
+  <!-- Navigation -->
+  <div class="team-nav">
+    <button id="prevTeam" aria-label="Previous Team">&larr;</button>
+    <h3 id="teamTitle">Leadership</h3>
+    <button id="nextTeam" aria-label="Next Team">&rarr;</button>
+  </div>
+
+  <!-- Team Members -->
+  <div id="teamContainer" class="team-list"></div>
+</section>
+
+<style>
+/* --- Team Navigation --- */
+.team-nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 30px;
+  color: white;
+}
+.team-nav button {
+  background: none;
+  border: none;
+  font-size: 2rem;
+  cursor: pointer;
+  color: white;
+  transition: transform 0.2s;
+}
+.team-nav button:hover {
+  transform: scale(1.2);
+}
+
+/* --- Compact Sideways Cards --- */
+.team-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: center;
+}
+
+.team-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #222;          /* background color */
+  color: #f1f1f1;            /* text color */
+  border-radius: 8px;
+  padding: 10px 16px;
+  width: 90%;
+  max-width: 600px;
+  font-size: 0.95rem;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.3);
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+.team-card:hover {
+  transform: translateY(-2px);
+  background: #333;          /* hover background */
+}
+
+.team-card h3 {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 600;
+}
+.team-card p.role {
+  margin: 0;
+  font-size: 0.85rem;
+  opacity: 0.85;
+}
+.team-card .bio {
+  display: none;
+  font-size: 0.8rem;
+  margin-top: 4px;
+  opacity: 0.9;
+}
+.team-card .toggle {
+  font-size: 0.8rem;
+  font-weight: bold;
+  color: #00ccff;
+  cursor: pointer;
+  margin-left: 10px;
+}
+</style>
+
+<script>
+const teamData = [
+  {
+    title: "Leadership",
+    members: [
+      { name: "Funko", role: "Founder & CEO", bio: "Funko is the visionary founder..." },
+      { name: "RJX", role: "Co-Founder & Co-CEO", bio: "RJX helps guide company direction..." },
+      { name: "Nile", role: "COO", bio: "Nile oversees daily operations..." },
+      { name: "RJ", role: "COO", bio: "RJ ensures smooth workflows..." },
+      { name: "Syniq", role: "Owner", bio: "Syniq supports the team's growth..." },
+      { name: "Resect", role: "Owner", bio: "Resect contributes to strategy..." },
+      { name: "Sleepy", role: "Co-Owner", bio: "Sleepy manages executive functions..." }
+    ]
+  },
+  {
+    title: "Executive & Director",
+    members: [
+      { name: "Elysrism", role: "Creative Director", bio: "Elysrism leads creative projects..." }
+    ]
+  },
+  {
+    title: "Developers",
+    members: [
+      { name: "Nthia", role: "Web Developer", bio: "Nthia builds and maintains the website..." }
+    ]
+  }
+];
+
+let currentIndex = 0;
+const teamTitle = document.getElementById('teamTitle');
+const teamContainer = document.getElementById('teamContainer');
+
+function renderTeam(index) {
+  const { title, members } = teamData[index];
+  teamTitle.textContent = title;
+  teamContainer.innerHTML = "";
+
+  members.forEach(member => {
+    const card = document.createElement('article');
+    card.className = "team-card";
+
+    card.innerHTML = `
+      <div>
+        <h3>${member.name}</h3>
+        <p class="role">${member.role}</p>
+        <p class="bio">${member.bio}</p>
+      </div>
+      <span class="toggle">Who?</span>
+    `;
+
+    const toggle = card.querySelector(".toggle");
+    const bio = card.querySelector(".bio");
+
+    toggle.addEventListener("click", () => {
+      if (bio.style.display === "block") {
+        bio.style.display = "none";
+        toggle.textContent = "Who?";
+      } else {
+        bio.style.display = "block";
+        toggle.textContent = "Hide";
+      }
+    });
+
+    teamContainer.appendChild(card);
+  });
+}
+
+document.getElementById('prevTeam').addEventListener('click', () => {
+  currentIndex = (currentIndex - 1 + teamData.length) % teamData.length;
+  renderTeam(currentIndex);
+});
+
+document.getElementById('nextTeam').addEventListener('click', () => {
+  currentIndex = (currentIndex + 1) % teamData.length;
+  renderTeam(currentIndex);
+});
+
+renderTeam(currentIndex);
+</script>
+
+<!-- FOOTER -->
+<footer style="background-color: #2600ffb3; color: #fff; padding: 20px 0; width: 100%;">
+  <div style="max-width: 1200px; margin: 0 auto; padding: 0 20px; display: flex; flex-direction: column; align-items: center; gap: 10px; text-align: center;">
+
+    <!-- Brand -->
+    <div style="font-size: 1.2rem; font-weight: bold;">
+      Elevate
+    </div>
+
+    <!-- Social Icons -->
+    <div style="display: flex; gap: 15px; justify-content: center;">
+      <a href="https://twitter.com/ElevateStudio_" target="_blank" rel="noopener">
+        <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/x.svg" alt="Twitter" style="width: 24px; height: 24px; filter: invert(1);">
+      </a>
+      <a href="https://discord.gg/J554c8HsdN" target="_blank" rel="noopener">
+        <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/discord.svg" alt="Discord" style="width: 24px; height: 24px; filter: invert(1);">
+      </a>
+    </div>
+
+    <!-- Contact Button -->
+    <a href="mailto:ElevateStudios@usa.com" style="background-color: #fff; color: #3700ff; padding: 6px 14px; border-radius: 5px; text-decoration: none; font-weight: bold;">
+      Contact Us
+    </a>
+
+    <!-- Copyright -->
+    <div style="font-size: 0.9rem;">
+      &copy; 2025 <strong>Elevate</strong> — Made by 
+      <a href="https://twitter.com/nthiapsd" target="_blank" rel="noopener" style="color: #fff; text-decoration: underline;">@nthiapsd</a>
+    </div>
+
+  </div>
+</footer>
