@@ -1,131 +1,87 @@
-/* AvtronaHQ — Combined single-page Avtrona-style site
-   Edit variables at the top to tweak colors and spacing.
-*/
-:root{
-  --bg-gradient: linear-gradient(135deg, #000000, #000000, #000000);
-  --accent1:#eeff00; /* purple */
-  --accent2:#f2ff00; /* pink */
-  --card:#0f0f12;
-  --muted:#b9b9b9;
-  --white:#000000;
-  --radius:18px;
+/* ===== Base Reset ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-
-/* Gradient text utility */
-.gradient-text {
-  background: linear-gradient(90deg, #000000, #bfc90016);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  font-weight: bold;
+body {
+  font-family: 'Poppins', sans-serif;
+  background: #0a0a0a;
+  color: white;
+  line-height: 1.6;
 }
 
-
-*{box-sizing:border-box}
-html,body{
-  height:100%;
-  margin:0;
-  font-family:Inter,ui-sans-serif,system-ui,-apple-system,'Segoe UI',Roboto,'Helvetica Neue',Arial;
-  color:var(--white);
-  background:var(--bg-gradient); /* 🌌 Gradient applied */
-  scroll-behavior:smooth
-}
-a{color:inherit}
-.container{max-width:1200px;margin:0 auto;padding:28px}
-
-.page-wrap{
-  min-height:100vh;
-  background-image:
-    radial-gradient(1000px 400px at 10% 10%, rgba(0, 0, 0, 0.25), transparent 40%),
-    radial-gradient(1000px 500px at 90% 90%, rgba(204, 255, 0, 0.05), transparent 40%),
-    var(--bg-gradient); /* Gradient sits underneath */
-  padding-bottom:80px;
+/* ===== Header / Nav ===== */
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem 2rem;
+  background: rgba(255, 255, 255, 0.02);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 
-/* NAV */
-.header{
-  position:sticky;top:0;z-index:1000;background:linear-gradient(180deg, rgb(255, 251, 0), rgb(255, 234, 0));
-  -webkit-backdrop-filter: blur(6px);
-  backdrop-filter: blur(6px);border-bottom:1px solid rgba(255, 0, 0, 0.03)
-}
-.header-inner{display:flex;align-items:center;justify-content:space-between;padding:14px 28px;max-width:1200px;margin:0 auto}
-.brand{display:flex;align-items:center;gap:12px}
-.brand img{width:56px;height:56px;border-radius:12px;object-fit:cover;display:block}
-.nav{display:flex;gap:18px}
-.nav a{color:var(--white);text-decoration:none;padding:8px 12px;border-radius:10px;font-weight:600;opacity:0.95;transition:all .18s ease}
-.nav a:hover{transform:translateY(-4px);box-shadow:0 18px 40px rgba(102, 0, 255, 0.12);background:linear-gradient(90deg, rgba(123,60,255,0.06), rgba(255,0,119,0.04))}
-
-/* HERO */
-.hero{padding:72px 0 36px;text-align:center}
-.hero h1{font-size:56px;margin:0;letter-spacing:1px}
-.hero p{color:var(--muted);margin-top:12px;font-size:18px}
-
-/* SECTION HEADINGS (Latest News style) */
-.section-strap{max-width:900px;margin:0 auto 36px;text-align:center}
-.latest-title{font-size:84px;font-weight:800;margin:0;line-height:0.85}
-.latest-title .word-old{color:var(--white);text-shadow:0 4px 12px rgba(0,0,0,0.6)}
-.latest-title .word-new{background:linear-gradient(90deg,var(--accent2),var(--accent1));-webkit-background-clip:text;-webkit-text-fill-color:transparent;display:inline-block;padding-left:8px}
-
-/* subtitle */
-.latest-sub{color:var(--muted);margin-top:18px;font-size:16px}
-
-/* NEWS CARDS layout */
-.news-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;margin-top:28px;align-items:start;padding:0 18px}
-.news-card{border-radius:20px;overflow:hidden;background:transparent;display:flex;flex-direction:column;min-height:420px;transition:transform .22s ease,box-shadow .22s ease}
-.news-card .media{height:220px;background:#d0ff00;display:block;position:relative;overflow:hidden}
-.news-card .media img{width:100%;height:100%;object-fit:cover;display:block;transform:scale(1);transition:transform .6s ease}
-.news-card:hover .media img{transform:scale(1.06)}
-.news-card .body{background:linear-gradient(180deg, rgba(0,0,0,0.55), rgba(0,0,0,0.75));padding:22px;color:var(--muted);flex:1;display:flex;flex-direction:column;justify-content:flex-start}
-.news-card .date{font-size:12px;color:rgba(255,255,255,0.45);letter-spacing:1px;margin-bottom:12px}
-.news-card h3{color:var(--white);margin:0 0 12px;font-size:20px}
-.news-card p{flex:1;margin:0 0 18px;line-height:1.6}
-.read-more{align-self:flex-start;color:var(--muted);text-decoration:none;font-weight:700;display:inline-flex;gap:8px;align-items:center;border-radius:8px;padding:8px 12px;background:rgba(255,255,255,0.02);transition:all .12s ease}
-.read-more:hover{transform:translateY(-4px);box-shadow:0 14px 40px rgba(255, 255, 0, 0.12);color:var(--white)}
-
-/* OTHER sections */
-.section{padding:48px 0}
-.about-card{background:linear-gradient(180deg, rgba(255,255,255,0.02),rgba(255,255,255,0.01));padding:22px;border-radius:14px;color:var(--muted);max-width:900px;margin:0 auto}
-
-/* FOOTER */
-.footer{border-top:1px solid rgba(229, 255, 0, 0.959);padding:1px 0;margin-top:40px}
-.footer .left{color:var(--muted)}
-
-/* Responsive tweaks */
-@media (max-width:1100px){
-  .news-grid{grid-template-columns:repeat(2,1fr)}
-  .latest-title{font-size:64px}
-}
-@media (max-width:720px){
-  .news-grid{grid-template-columns:1fr;gap:18px;padding:0 12px}
-  .nav{display:none}
-  .brand img{width:48px;height:48px}
-  .latest-title{font-size:44px}
-  .hero h1{font-size:32px}
+.nav ul {
+  display: flex;
+  list-style: none;
+  gap: 2rem;
 }
 
-/* Gradient Title Styling */
-.gradient-title {
-    background: linear-gradient(90deg, #e4f70d, #ffee00);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    color: transparent;
+.nav a {
+  color: white;
+  text-decoration: none;
+  font-weight: 600;
+  transition: 0.3s;
 }
 
-/* News Tab Formatting */
-.news-item {
-    background: rgba(255,255,255,0.05);
-    border-radius: 8px;
-    padding: 15px;
-    margin-bottom: 15px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+.nav a:hover {
+  color: #ffcc00;
 }
-.news-item h3 {
-    font-size: 1.4em;
-    margin-bottom: 5px;
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 700;
+  font-size: 1.2rem;
 }
-.news-item p {
-    font-size: 1em;
-    line-height: 1.5;
+
+.logo-white {
+  filter: brightness(0) invert(1);
+  width: 42px;
+  height: auto;
+}
+
+/* ===== Sections ===== */
+section {
+  padding: 5rem 2rem;
+  max-width: 1200px;
+  margin: 60px auto;
+}
+
+section h1,
+section h2 {
+  margin-bottom: 1rem;
+  font-weight: 700;
+}
+
+/* ===== News Section ===== */
+#news {
+  background: rgba(255, 255, 255, 0.02); 
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 20px;
+  backdrop-filter: blur(12px);
+  padding: 3rem 2rem;
+}
+
+/* ===== Footer ===== */
+footer {
+  text-align: center;
+  padding: 2rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.02);
+  backdrop-filter: blur(12px);
+  margin-top: 60px;
 }
